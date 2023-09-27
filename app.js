@@ -28,6 +28,16 @@ app.get('/', (req, res)=>{
     });
 })
 
+app.get('/products/:id', (req, res)=>{
+    let id = req.params.id
+    let product = productManager.getProductById(id)
+    if(!product){
+        return res.send({products})
+    }
+    res.send({product})
+
+})
+
 app.listen(port, () => {
     console.log(`Servidor en el puerto ${port}`);
 });
